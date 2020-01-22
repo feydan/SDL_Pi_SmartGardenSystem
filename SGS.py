@@ -21,6 +21,7 @@ import logging;
 logging.basicConfig(level=logging.ERROR) 
 
 import updateBlynk
+import updateMqtt
 
 from pubnub.pubnub import PubNub
 from pubnub.pubnub import PNConfiguration
@@ -769,6 +770,18 @@ def updateState():
             state.SGS_State =state.SGS_States.Monitor
             if (config.USEBLYNK):
                 updateBlynk.blynkStatusUpdate()
+
+            if (config.USE_MQTT):
+                try:
+                    updateMqtt.updateMqtt(
+                        moisture=state.Moisture_Humidity,
+                        temperature=util.returnTemperatureCF(state.Temperature),
+                        humidity=state.Humidity,
+                        air_quality=state.AirQuality_Sensor_Value,
+                        light=state.Sunlight_Vis
+                    )
+                except Exception as e:
+                    print('Could not publish to MQTT: ' + e.message)
           
 
             if (config.OLED_Present) and (state.SGS_State == state.SGS_States.Monitor) :

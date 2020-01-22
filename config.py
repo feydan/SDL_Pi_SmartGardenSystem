@@ -1,3 +1,7 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 #
 #
@@ -27,6 +31,15 @@ DEBUG = False
 USEBLYNK = False 
 BLYNK_AUTH = 'xxxxx'
 BLYNK_URL = 'http://blynk-cloud.com/'
+
+
+############
+# MQTT configuration
+############
+
+USE_MQTT = os.getenv('MQTT_HOST') is not None
+MQTT_HOST = os.getenv('MQTT_HOST')
+MQTT_TOPIC = os.getenv('MQTT_SGS_TOPIC')
 
 ############
 # PubNub configuration
