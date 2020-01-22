@@ -25,6 +25,7 @@ cd  <BR>
 git clone https://github.com/adafruit/Adafruit_Python_GPIO.git <BR>
 cd Adafruit_Python_GPIO <BR>
 sudo python setup.py install <BR>
+sudo pip install python-dotenv <BR>
 
 
 Make sure you installed I2C as in this link:
@@ -55,6 +56,9 @@ follow the installation directions in README.md<BR>
 
 Make sure you go down into the python directory and follow the README.md in that directory<BR>
 use "sudo" if you run into permissions problems with the python installation<BR>
+
+#Installing MQTT
+sudo pip install paho-mqtt
 
 # final thoughts
 

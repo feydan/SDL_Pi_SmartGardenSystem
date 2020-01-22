@@ -1,5 +1,5 @@
 import paho.mqtt.publish as publish
-
+import json
 import config
 
 def updateMqtt(moisture, temperature, humidity, air_quality, light):
